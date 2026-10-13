@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GlowShore — Brand Universe</title>
+<meta name="description" content="GlowShore — Technology • Lifestyle • Future. Das erweiterte Markenhandbuch als interaktive Website.">
+<style>
+:root{
+  --bg:#070A14; --panel:#0c1120; --panel2:#10182b; --text:#f5f7ff; --muted:#9da8c3;
+  --cyan:#00E5FF; --blue:#246BFF; --violet:#7A2CFF; --pink:#FF2BD6;
+  --line:rgba(255,255,255,.09); --radius:24px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:
+  radial-gradient(circle at 75% 8%,rgba(122,44,255,.18),transparent 28%),
+  radial-gradient(circle at 12% 22%,rgba(0,229,255,.10),transparent 25%),
+  var(--bg);color:var(--text);font-family:Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,sans-serif;
+  line-height:1.65;overflow-x:hidden;
+}
+body:before{
+  content:"";position:fixed;inset:0;pointer-events:none;opacity:.18;
+  background-image:linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);
+  background-size:48px 48px;mask-image:linear-gradient(to bottom,black,transparent 80%);
+}
+a{color:inherit;text-decoration:none}
+button,input{font:inherit}
+.nav{
+  position:fixed;z-index:50;top:16px;left:50%;transform:translateX(-50%);
+  width:min(1180px,calc(100% - 28px));padding:10px 14px;
+  border:1px solid var(--line);border-radius:20px;background:rgba(7,10,20,.72);
+  backdrop-filter:blur(20px);display:flex;align-items:center;justify-content:space-between;
+}
+.brand{display:flex;align-items:center;gap:10px;font-weight:900;letter-spacing:.08em}
+.smark{
+  width:34px;height:34px;border-radius:11px;display:grid;place-items:center;
+  background:linear-gradient(135deg,var(--cyan),var(--violet),var(--pink));
+  box-shadow:0 0 28px rgba(0,229,255,.25);font-weight:1000;color:white
+}
+.navlinks{display:flex;gap:4px}
+.navlinks a,.menuBtn{padding:9px 12px;border-radius:12px;color:var(--muted);font-size:14px}
+.navlinks a:hover,.menuBtn:hover{color:white;background:rgba(255,255,255,.06)}
+.menuBtn{display:none;background:none;border:0;color:white}
+.hero{min-height:92vh;display:grid;place-items:center;padding:150px 20px 80px;position:relative}
+.hero-inner{max-width:1100px;text-align:center}
+.eyebrow{color:var(--cyan);text-transform:uppercase;letter-spacing:.25em;font-size:12px;font-weight:800}
+h1{font-size:clamp(64px,12vw,150px);line-height:.85;margin:20px 0 28px;letter-spacing:-.07em}
+.gradient{background:linear-gradient(100deg,#fff 5%,var(--cyan) 35%,var(--violet) 67%,var(--pink));-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p{max-width:700px;margin:auto;color:var(--muted);font-size:clamp(17px,2.2vw,22px)}
+.hero-actions{display:flex;justify-content:center;gap:12px;margin-top:34px;flex-wrap:wrap}
+.btn{border:1px solid var(--line);padding:13px 19px;border-radius:15px;background:rgba(255,255,255,.05);cursor:pointer;color:white;font-weight:750}
+.btn.primary{background:linear-gradient(110deg,var(--cyan),var(--violet));border:0;box-shadow:0 10px 35px rgba(36,107,255,.2)}
+.btn:hover{transform:translateY(-2px)}
+.orbit{
+  position:absolute;width:min(700px,80vw);height:min(700px,80vw);border:1px solid rgba(0,229,255,.08);border-radius:50%;
+  z-index:-1;animation:spin 24s linear infinite
+}
+.orbit:after{content:"";position:absolute;width:10px;height:10px;border-radius:50%;background:var(--cyan);box-shadow:0 0 30px var(--cyan);top:12%;left:8%}
+@keyframes spin{to{transform:rotate(360deg)}}
+.section{max-width:1180px;margin:auto;padding:100px 20px}
+.section-head{display:flex;justify-content:space-between;gap:30px;align-items:end;margin-bottom:35px}
+.kicker{color:var(--cyan);font-size:12px;letter-spacing:.2em;text-transform:uppercase;font-weight:800}
+h2{font-size:clamp(36px,5vw,64px);line-height:1;margin:10px 0;letter-spacing:-.04em}
+.lead{color:var(--muted);max-width:650px}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.card{
+  background:linear-gradient(145deg,rgba(255,255,255,.055),rgba(255,255,255,.018));
+  border:1px solid var(--line);border-radius:var(--radius);padding:25px;
+  transition:.25s;position:relative;overflow:hidden
+}
+.card:before{content:"";position:absolute;inset:-50%;background:radial-gradient(circle,rgba(0,229,255,.07),transparent 35%);opacity:0;transition:.3s}
+.card:hover{transform:translateY(-5px);border-color:rgba(0,229,255,.25)}
+.card:hover:before{opacity:1}
+.num{font-size:12px;color:var(--cyan);font-weight:900;letter-spacing:.12em}
+.card h3{margin:8px 0 10px;font-size:20px;position:relative}
+.card p{margin:0;color:var(--muted);font-size:14px;position:relative}
+.palette{display:grid;grid-template-columns:repeat(6,1fr);gap:10px}
+.swatch{height:145px;border-radius:18px;padding:15px;display:flex;flex-direction:column;justify-content:end;border:1px solid rgba(255,255,255,.12)}
+.swatch b{font-size:12px}.swatch span{font-size:11px;opacity:.75}
+.s1{background:#070A14}.s2{background:#00E5FF;color:#061018}.s3{background:#246BFF}.s4{background:#7A2CFF}.s5{background:#FF2BD6}.s6{background:#F5F7FF;color:#070A14}
+.logo-stage{min-height:360px;border:1px solid var(--line);border-radius:30px;display:grid;place-items:center;background:
+  radial-gradient(circle at 50% 50%,rgba(0,229,255,.12),transparent 22%),
+  linear-gradient(135deg,rgba(0,229,255,.04),rgba(122,44,255,.08),rgba(255,43,214,.04))}
+.bigS{font-size:180px;font-weight:1000;font-style:italic;line-height:1;
+  background:linear-gradient(135deg,var(--cyan),var(--violet) 55%,var(--pink));-webkit-background-clip:text;color:transparent;
+  filter:drop-shadow(0 0 35px rgba(0,229,255,.3));}
+.products{grid-template-columns:repeat(4,1fr)}
+.product{min-height:250px}
+.product-icon{height:100px;display:grid;place-items:center;font-size:55px}
+.product h3{font-size:24px}
+.timeline{display:grid;gap:12px}
+.phase{display:grid;grid-template-columns:120px 1fr;gap:20px;padding:20px;border:1px solid var(--line);border-radius:18px;background:rgba(255,255,255,.025)}
+.phase b{color:var(--cyan)}
+.searchbar{display:flex;gap:10px;margin-bottom:20px}
+.searchbar input{flex:1;padding:15px 18px;border-radius:15px;border:1px solid var(--line);background:rgba(255,255,255,.045);color:white;outline:none}
+.searchbar input:focus{border-color:var(--cyan);box-shadow:0 0 0 3px rgba(0,229,255,.08)}
+.footer{border-top:1px solid var(--line);padding:45px 20px;color:var(--muted)}
+.footer-inner{max-width:1180px;margin:auto;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+.hidden{display:none!important}
+.reveal{opacity:0;transform:translateY(25px);transition:.7s}
+.reveal.show{opacity:1;transform:none}
+@media(max-width:850px){
+ .navlinks{display:none}.menuBtn{display:block}
+ .nav.open .navlinks{display:flex;position:absolute;top:60px;left:0;right:0;flex-direction:column;background:rgba(7,10,20,.95);padding:10px;border:1px solid var(--line);border-radius:16px}
+ .grid,.products{grid-template-columns:1fr 1fr}.palette{grid-template-columns:repeat(3,1fr)}
+}
+@media(max-width:560px){
+ .grid,.products{grid-template-columns:1fr}.palette{grid-template-columns:1fr 1fr}
+ .section{padding:70px 16px}.hero{padding-left:16px;padding-right:16px}
+ .phase{grid-template-columns:1fr}.bigS{font-size:120px}
+}
+</style>
+</head>
+<body>
+
+<nav class="nav" id="nav">
+  <a href="#top" class="brand"><span class="smark">S</span> GLOWSHORE</a>
+  <div class="navlinks">
+    <a href="#essence">Essence</a><a href="#visual">Visual</a><a href="#products">Products</a><a href="#brandbook">Brand Book</a><a href="#roadmap">Roadmap</a>
+  </div>
+  <button class="menuBtn" id="menuBtn">MENU</button>
+</nav>
+
+<header class="hero" id="top">
+  <div class="orbit"></div>
+  <div class="hero-inner reveal">
+    <div class="eyebrow">Technology • Lifestyle • Future</div>
+    <h1><span class="gradient">GLOWSHORE</span></h1>
+    <p>Eine futuristische Tech- und Lifestyle-Welt, in der Technologie Persönlichkeit bekommt — inspiriert von Miami, Nachtlicht, Wasser, Design und der Idee einer besseren digitalen Zukunft.</p>
+    <div class="hero-actions">
+      <a class="btn primary" href="#essence">Brand entdecken ↗</a>
+      <a class="btn" href="#brandbook">120 Brand Points</a>
+    </div>
+  </div>
+</header>
+
+<main>
+<section class="section reveal" id="essence">
+  <div class="section-head"><div><div class="kicker">01 / Essence</div><h2>Future technology<br>with personality.</h2></div><p class="lead">GlowShore verbindet leistungsfähige Technologie mit Design, Emotion und Lifestyle. Nicht nur Produkte — eine komplette visuelle und digitale Welt.</p></div>
+  <div class="grid">
+    <article class="card"><div class="num">MISSION</div><h3>Technologie + Emotion</h3><p>Technische Produkte sollen nicht kalt oder austauschbar wirken. GlowShore verbindet Funktion, Design und Atmosphäre zu einem Erlebnis, das modern und charakterstark bleibt.</p></article>
+    <article class="card"><div class="num">VISION</div><h3>Ein eigenes Universum</h3><p>Hardware, Software und digitale Dienste sollen langfristig wie Teile derselben Familie funktionieren — vom Smartphone bis zur eigenen Softwareplattform.</p></article>
+    <article class="card"><div class="num">NORTH STAR</div><h3>Zukunft, die funktioniert.</h3><p>GlowShore soll sich wie ein Blick in die Zukunft anfühlen und trotzdem im Alltag verständlich, zuverlässig und angenehm bleiben.</p></article>
+  </div>
+</section>
+
+<section class="section reveal" id="visual">
+  <div class="section-head"><div><div class="kicker">02 / Visual system</div><h2>Dark. Electric.<br>Miami at night.</h2></div><p class="lead">Dunkle Räume bilden die Bühne. Cyan, Blau, Violett und Magenta wirken wie kontrollierte Lichtquellen.</p></div>
+  <div class="palette">
+    <div class="swatch s1"><b>Deep Space</b><span>#070A14</span></div>
+    <div class="swatch s2"><b>Electric Cyan</b><span>#00E5FF</span></div>
+    <div class="swatch s3"><b>Neon Blue</b><span>#246BFF</span></div>
+    <div class="swatch s4"><b>Cyber Violet</b><span>#7A2CFF</span></div>
+    <div class="swatch s5"><b>Neon Magenta</b><span>#FF2BD6</span></div>
+    <div class="swatch s6"><b>Fast White</b><span>#F5F7FF</span></div>
+  </div>
+  <div style="height:18px"></div>
+  <div class="logo-stage"><div class="bigS">S</div></div>
+</section>
+
+<section class="section reveal" id="products">
+  <div class="section-head"><div><div class="kicker">03 / Product universe</div><h2>The GlowShore<br>ecosystem.</h2></div><p class="lead">Produktideen sind keine bloßen Gadgets. Jede Kategorie bekommt eine klare Aufgabe und dieselbe Design-DNA.</p></div>
+  <div class="grid products">
+    <article class="card product"><div class="product-icon">◈</div><div class="num">01</div><h3>GlowShore One</h3><p>Smartphone-Vision mit eigenem UI, Glas, dunklen Materialien und kontrollierten Lichtdetails.</p></article>
+    <article class="card product"><div class="product-icon">◌</div><div class="num">02</div><h3>Watch</h3><p>Reduzierte Neon-UI, klare Informationshierarchie und ein hochwertiges, alltagstaugliches Gehäuse.</p></article>
+    <article class="card product"><div class="product-icon">◉</div><div class="num">03</div><h3>Buds</h3><p>Wireless-Earbuds mit hochwertigem Case, Sounddesign und nahtloser Geräteintegration.</p></article>
+    <article class="card product"><div class="product-icon">⌘</div><div class="num">04</div><h3>Hub</h3><p>Zentrale Verbindung für Geräte, Smart Home und Automationen — technisch komplex, aber einfach bedienbar.</p></article>
+  </div>
+</section>
+
+<section class="section reveal">
+  <div class="section-head"><div><div class="kicker">04 / Design language</div><h2>Everything<br>is connected.</h2></div><p class="lead">Logo, Typografie, Material, Licht, UI, Sound und Haptik erzählen dieselbe Geschichte.</p></div>
+  <div class="grid">
+    <article class="card"><div class="num">LOGO</div><h3>S-Emblem</h3><p>Das zentrale Zeichen bleibt geometrisch, kompakt und wiedererkennbar. Materialien und Licht dürfen variieren, die Grundform bleibt stabil.</p></article>
+    <article class="card"><div class="num">UI</div><h3>Digital material</h3><p>Dunkle Flächen, klare Typografie und kontrollierte Cyan-/Violett-Akzente übertragen die physische Materialwelt in Software.</p></article>
+    <article class="card"><div class="num">MOTION</div><h3>Light in motion</h3><p>Animationen erklären, bestätigen und orientieren. Sie sollen präzise wirken, nicht wie unnötige Effekthascherei.</p></article>
+    <article class="card"><div class="num">SOUND</div><h3>Audio identity</h3><p>Kurze elektronische Sounds können Startvorgänge, Benachrichtigungen und Aktionen zu einer eigenen akustischen Sprache verbinden.</p></article>
+    <article class="card"><div class="num">MATERIAL</div><h3>Glass + metal</h3><p>Glas vermittelt Tiefe, Metall Präzision und matte Oberflächen Ruhe. Die Kombination muss technisch glaubwürdig bleiben.</p></article>
+    <article class="card"><div class="num">HAPTICS</div><h3>Feel the interface</h3><p>Gezieltes haptisches Feedback macht digitale Interaktionen physisch spürbar und kann das Qualitätsgefühl verstärken.</p></article>
+  </div>
+</section>
+
+<section class="section reveal" id="brandbook">
+  <div class="section-head"><div><div class="kicker">05 / Brand book</div><h2>120 principles.<br>One identity.</h2></div><p class="lead">Durchsuche das komplette Markenhandbuch direkt auf der Website.</p></div>
+  <div class="searchbar"><input id="search" placeholder="Brand Point suchen … z. B. Datenschutz, Miami, Logo, KI"><button class="btn" id="clear">Clear</button></div>
+  <div class="grid" id="points"></div>
+</section>
+
+<section class="section reveal" id="roadmap">
+  <div class="section-head"><div><div class="kicker">06 / Roadmap</div><h2>Build the<br>future.</h2></div><p class="lead">Vom Markensystem über digitale Konzepte bis zu echten Prototypen.</p></div>
+  <div class="timeline">
+    <div class="phase"><b>PHASE 01</b><div><strong>Marke</strong><br><span class="lead">Logo, Farben, Typografie, Brand Book und Produktvision festigen.</span></div></div>
+    <div class="phase"><b>PHASE 02</b><div><strong>Digital</strong><br><span class="lead">UI-Konzepte, Website-Mockup und erste Produkt-Renderings entwickeln.</span></div></div>
+    <div class="phase"><b>PHASE 03</b><div><strong>Prototypen</strong><br><span class="lead">Einfache Software- und Hardware-Prototypen zum Lernen und Testen bauen.</span></div></div>
+    <div class="phase"><b>PHASE 04</b><div><strong>Community</strong><br><span class="lead">Feedback sammeln und die überzeugendsten Konzepte weiterentwickeln.</span></div></div>
+    <div class="phase"><b>PHASE 05</b><div><strong>Business</strong><br><span class="lead">Erst bei einer tragfähigen Idee echte Produkte, Kosten und Unternehmensplanung prüfen.</span></div></div>
+  </div>
+</section>
+</main>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div><b style="color:white">GLOWSHORE</b><br>Technology • Lifestyle • Future</div>
+    <div>© 2026 GlowShore · Built for the next wave.</div>
+  </div>
+</footer>
+
+<script>
+const points = [
+["Mission","GlowShore verbindet futuristische Technologie mit einer starken Lifestyle-Idee. Technische Produkte sollen nicht kalt, langweilig oder rein funktional wirken. Technologie, Design und Emotion werden zusammen gedacht."],
+["Vision","Langfristig soll GlowShore eine eigenständige Tech- und Lifestyle-Marke werden, die Hardware, Software und Design als zusammenhängende Welt denkt."],
+["Purpose","Technologie soll zugänglicher, spannender und emotionaler werden. Komplexe Technik bleibt leistungsfähig im Hintergrund, während die Oberfläche einfach und angenehm bleibt."],
+["Core idea","Future technology with personality. Zukunftstechnologie darf eine eigene Persönlichkeit besitzen, ohne unnötig kompliziert zu werden."],
+["Brand promise","Jedes GlowShore-Konzept soll einen klaren Nutzen besitzen und gleichzeitig ein besonderes Erlebnis bieten."],
+["Ambition","GlowShore soll an S-Emblem, dunkler Grundwelt, Neonreflexionen, geometrischer Typografie und präziser Tech-Ästhetik erkennbar sein."],
+["Long-term goal","Ein zusammenhängendes Ökosystem aus Hardware, Software und digitalen Diensten — mit guter Kompatibilität und ohne künstliche Einschränkungen."],
+["Brand feeling","Futuristisch, hochwertig, energiegeladen und frei. Dunkle Flächen geben Tiefe, Neon erzeugt Energie und Glas oder Metall vermitteln Präzision."],
+["Emotional benefit","Details wie Licht, Animation, Material, Sound, Haptik und Interaktion sollen Begeisterung auslösen, ohne künstlich elitär zu wirken."],
+["Functional benefit","Menüs müssen verständlich sein, wichtige Funktionen schnell erreichbar und alltägliche Aufgaben zuverlässig lösbar."],
+["Target age","Besonders junge Menschen und junge Erwachsene mit Interesse an Technik, Design, Gaming, Musik und moderner Kultur — ohne andere Altersgruppen auszuschließen."],
+["Tech audience","Menschen mit Interesse an Smartphones, Wearables, KI, Gaming, Computern, Robotik und neuen digitalen Technologien."],
+["Design audience","Materialien, Kanten, Oberflächen, Beleuchtung und Proportionen sind Teil des eigentlichen Produkterlebnisses."],
+["Lifestyle audience","Technologie trifft Musik, Reisen, Gaming, Mode, Architektur, Fotografie, Social Media und urbane Freizeitkultur."],
+["Mindset","Neugierig, kreativ, selbstbewusst und offen für Neues. GlowShore soll Neugier und Kreativität fördern statt Statusdruck."],
+["Community","Eine Community kann Ideen, UI-Konzepte, Produktwünsche und Designs teilen und dabei echte Bedürfnisse sichtbar machen."],
+["Brand personality","Mutig, intelligent, modern, kreativ und leicht rebellisch — aber niemals laut um der Lautstärke willen."],
+["Premium","Premium bedeutet Qualität, Präzision und Durchdachtheit statt einfach einen hohen Preis zu verlangen."],
+["Simplicity","Komplexe Technik soll nach außen möglichst einfach erscheinen. Einfachheit bedeutet gute Organisation, nicht fehlende Funktionen."],
+["Innovation","Neue Funktionen brauchen einen konkreten Grund: ein Problem lösen, eine Erfahrung verbessern oder eine Aufgabe vereinfachen."],
+["Miami influence","Miami inspiriert mit Nachtlicht, Wasser, Architektur, Palmen und Energie — modern interpretiert statt kitschig kopiert."],
+["Tech influence","Glas, Metall, Mikroelektronik, Interfaces, Robotik, Mechanik und KI bilden eine glaubwürdige technische Inspirationswelt."],
+["Future influence","Die Zukunft soll glaubwürdig wirken: saubere Formen, reduzierte Interfaces, intelligente Funktionen und neue Materialkombinationen."],
+["Color mood","Dunkle Flächen dominieren; Neon wird als Licht und Akzent eingesetzt."],
+["Primary dark","Deep Space #070A14 bildet die wichtigste dunkle Grundfarbe."],
+["Primary cyan","Electric Cyan #00E5FF steht für Energie, Technologie und digitale Präzision."],
+["Primary blue","Neon Blue #246BFF ergänzt Cyan und verbindet leuchtende mit tieferen technischen Tönen."],
+["Primary violet","Cyber Violet #7A2CFF sorgt für Tiefe und futuristischen Charakter."],
+["Accent pink","Neon Magenta #FF2BD6 ist ein sparsamer Akzent für besondere Highlights."],
+["White","Fast White #F5F7FF dient Lesbarkeit und Klarheit in der dunklen Welt."],
+["Color balance","Wenn alles leuchtet, verliert jedes Highlight seine Bedeutung. Neon braucht Ruhe um sich herum."],
+["Gradient","Cyan → Blau → Violett → Magenta bildet einen kontrollierten technischen Lichtfluss."],
+["Logo concept","Das futuristische S-Emblem ist das zentrale Zeichen und soll auch ohne Wortmarke erkennbar sein."],
+["Logo construction","Die Grundgeometrie bleibt stabil und kann mit Glas, Chrom oder transparenten Ebenen inszeniert werden."],
+["Logo usage","Freiraum und klare Kontraste sichern die Wiedererkennbarkeit des Emblems."],
+["Logo protection","Das S-Emblem darf nicht verzerrt oder durch zufällige Filter und Formen verändert werden."],
+["Wordmark","GLOW SHORE ergänzt das S-Emblem mit einer geometrischen, modernen Typografie."],
+["Typography","Moderne geometrische Sans-Serif-Schriften, mit Fokus auf Lesbarkeit und klarer Hierarchie."],
+["Tone","Kurz, klar und selbstbewusst. Modern und technisch, aber nicht künstlich kompliziert."],
+["Naming","Produktnamen sollen einfach, merkbar und systematisch sein."],
+["Product philosophy","Produkte lösen zuerst ein echtes Problem und sehen danach besonders aus. Funktion und Design werden gemeinsam entwickelt."],
+["Industrial design","Präzise, reduziert und technisch: klare Flächen, kontrollierte Lichtlinien und glaubwürdige Materialien."],
+["Materials","Materialien werden nach Funktion und Gefühl ausgewählt — nicht nur, weil sie futuristisch aussehen."],
+["Lighting","Licht zeigt Zustände, bestätigt Interaktionen oder hebt Formen hervor und wird kontrolliert eingesetzt."],
+["Glass","Glas vermittelt Tiefe und Präzision, muss bei echten Produkten aber alltagstauglich und sicher sein."],
+["Chrome","Metallische Oberflächen können hochwertig wirken, sollten aber gezielt statt übertrieben eingesetzt werden."],
+["Textures","Mikrostrukturen und feine Muster geben Tiefe, ohne das Produkt zu überladen."],
+["UI","Die Benutzeroberfläche setzt die GlowShore-Materialwelt digital fort, bleibt aber schnell verständlich."],
+["Animation","Animationen erklären, bestätigen und orientieren. Sie sollen kurz und präzise sein."],
+["Sound","Eine eigene elektronische Soundwelt kann Startvorgänge, Benachrichtigungen und Aktionen begleiten."],
+["Haptics","Gezieltes haptisches Feedback macht digitale Interaktionen physisch spürbar."],
+["Packaging","Dunkle Flächen, präzise Typografie und kleine Neonakzente treffen auf sinnvolle, möglichst nachhaltige Verpackung."],
+["Sustainability","Langlebigkeit, Reparierbarkeit, Materialwahl, Energieverbrauch und Verpackung werden von Anfang an mitgedacht."],
+["Repairability","Komponenten sollen möglichst reparierbar oder austauschbar gestaltet werden."],
+["Privacy","Nutzer sollen verstehen, welche Daten benötigt werden und warum. Vertrauen ist Teil der Produktqualität."],
+["Security","Sichere Authentifizierung, Updates und Schutzmaßnahmen werden bereits bei der Entwicklung berücksichtigt."],
+["Accessibility","Kontraste, skalierbare Schrift, klare Symbole und alternative Bedienmöglichkeiten machen Technik zugänglicher."],
+["Software ecosystem","Eine gemeinsame Softwareebene verbindet Geräte, Einstellungen und Präferenzen."],
+["AI direction","KI wird dort eingesetzt, wo sie konkrete Aufgaben einfacher macht — transparent und kontrollierbar."],
+["GlowShore One","Smartphone-Vision mit S-Emblem, dunklen Materialien, Glas, Lichtdetails und eigener UI."],
+["GlowShore Watch","Wearable mit reduzierter Neon-UI, klaren Informationen und hochwertigem Gehäuse."],
+["GlowShore Buds","Wireless-Earbuds mit hochwertigem Case, Sounddesign und nahtloser App-Integration."],
+["GlowShore Hub","Zentrale Steuerung für vernetzte Geräte, Smart Home und Automationen."],
+["GlowShore OS","Eine verbindende Software-Vision für Smartphone, Watch und weitere GlowShore-Produkte."],
+["GlowShore Air","Flexible Produktidee für mobile oder smarte Umgebungstechnologie — erst nach Festlegung eines echten Nutzens konkretisieren."],
+["GlowShore Studio","Digitale Kreativplattform für Design, Musik, 3D, UI oder Produktkonzepte."],
+["Product naming","Marke + kurze Produktbezeichnung schaffen eine verständliche und langfristige Produktarchitektur."],
+["Product tiers","Verschiedene Preisklassen sollen durch echte Unterschiede bei Material, Leistung oder Funktionen entstehen."],
+["Prototyping","Jeder Prototyp beantwortet eine konkrete Frage. Digitale Mockups können vor Hardwaretests genutzt werden."],
+["Learning","Programmierung, Elektronik, 3D, UI/UX, Produktentwicklung und Marketing können schrittweise gelernt werden."],
+["Community feedback","Feedback soll systematisch gesammelt werden. Zuhören bedeutet nicht, jede Meinung automatisch umzusetzen."],
+["Social content","Teaser, UI-Animationen, Renderings und Designprozesse erzeugen Neugier und zeigen den Aufbau der Marke."],
+["Photography","Dunkle, präzise Produktfotografie mit Licht über Glas, Metall und Kanten."],
+["3D renders","Realistische Renderings zeigen Produkte, Materialien, Reflexionen und glaubwürdige Nutzungssituationen."],
+["Campaigns","Kampagnen erzählen Geschichten mit Nacht, Wasser, Architektur, Licht und einem klaren Produktfokus."],
+["Website","Die Website funktioniert als digitaler Showroom mit großen Visuals, kurzen Texten und flüssigen Animationen."],
+["Pricing","Preise sollen aus echten Kosten, Entwicklung, Vertrieb und Zielgruppe entstehen — nicht nur aus einem Premium-Image."],
+["Business model","Hardwareverkauf und optionale Softwaredienste können kombiniert werden, ohne Grundfunktionen künstlich einzuschränken."],
+["Partnerships","Partnerschaften sollen Fähigkeiten ergänzen und einen klaren Nutzen für Produkte oder Entwicklung liefern."],
+["Future retail","Zukünftige Showrooms könnten wie futuristische Tech-Lounges funktionieren, in denen Produkte ausprobiert werden."],
+["Workspace","Ein GlowShore-Arbeitsbereich verbindet Technologie, Pflanzen, Glas und indirektes Licht mit echter Arbeitsfunktion."],
+["Brand soundtrack","Atmosphärische elektronische Musik kann die visuelle Welt emotional verstärken."],
+["Sound identity","Ein kurzer, wiedererkennbarer Audio-Sting kann zur akustischen Signatur werden."],
+["Merch","Hochwertige, dezente Hoodies, Caps, Taschen oder Cases statt billiger Werbeartikel."],
+["Clothing","Technische Stoffe, reflektierende Details und reduzierte Schnitte können die Lifestyle-Welt ergänzen."],
+["Brand consistency","Logo, Farben, Typografie, Formen, Sprache, Fotografie und UI müssen als eine Familie funktionieren."],
+["Do: bold technology","Mutige Technologie ist willkommen, wenn sie einen klaren Zweck besitzt."],
+["Don't: cyberpunk chaos","Keine zufällige Überladung aus Neon, Kabeln, Hologrammen und technischen Symbolen."],
+["Do: one focal element","Jedes wichtige Design bekommt ein klares Hauptelement, das die Aufmerksamkeit führt."],
+["Don't: too many colors","Cyan, Blau, Violett und Magenta funktionieren am stärksten kontrolliert."],
+["Do: function plus design","Ein Element darf gleichzeitig nützlich sein und die visuelle Identität verstärken."],
+["Don't: tech for looks only","Kameras, Sensoren, Displays oder KI-Funktionen brauchen einen nachvollziehbaren Nutzen."],
+["Decision filter","Jede Idee muss mindestens einen echten Nutzen oder ein starkes Markenerlebnis liefern."],
+["North star","GlowShore soll sich wie ein Blick auf die Zukunft anfühlen und trotzdem benutzbar bleiben."],
+["Markenarchitektur","Neue Produkte werden klar unter GlowShore eingeordnet und durch eine gemeinsame Designsprache verbunden."],
+["Produktfamilien","Produktserien können unterschiedliche Rollen und Leistungsstufen besitzen, bleiben aber visuell verwandt."],
+["Einzigartigkeit","GlowShore soll keine bekannten Technologieunternehmen kopieren, sondern eigene Entscheidungen treffen."],
+["Designsignatur","S-Emblem, geschwungene Linien, transparente Elemente und Lichtakzente können als wiederkehrende Details dienen."],
+["Materialwelt","Glas, Aluminium, Keramik, recycelte Metalle und technische Kunststoffe bilden eine moderne Materialwelt."],
+["Oberflächen","Haptik, saubere Übergänge und präzise Verarbeitung machen Geräte auch beim Berühren hochwertig."],
+["Formensprache","Futuristische Geometrie wird mit wenigen geschwungenen Elementen kombiniert."],
+["Technische Glaubwürdigkeit","Konzeptkunst darf visionär sein, echte Produkte müssen technisch ehrlich bleiben."],
+["Benutzerfreundlichkeit","Futuristisches Aussehen darf Bedienung niemals unnötig kompliziert machen."],
+["Einrichtungserlebnis","Verpackung, Einschalten und Setup bilden ein kurzes, hochwertiges erstes Produkterlebnis."],
+["Benutzerkonto","Ein zentrales Konto verbindet Geräte und Dienste, während Nutzer Kontrolle über ihre Daten behalten."],
+["Geräteverbindung","Geräte kommunizieren dort miteinander, wo die Verbindung im Alltag tatsächlich Zeit spart."],
+["GlowShore OS","Ein einheitliches Designsystem verbindet Farben, Icons, Animationen, Widgets und Benachrichtigungen."],
+["KI-Integration","KI unterstützt bei Organisation, Gerätesteuerung und Informationen, ohne unnötig Entscheidungen zu übernehmen."],
+["Datenschutz","Datenschutz wird als Qualitätsmerkmal behandelt und nicht nur als rechtliche Pflicht."],
+["Sicherheit","Updates, Authentifizierung und verständliche Sicherheitseinstellungen schützen Nutzer ohne unnötige Reibung."],
+["Softwareupdates","Updates bringen Sicherheit, Verbesserungen und neue Funktionen und verlängern die Lebensdauer."],
+["Reparierbarkeit","Produkte werden möglichst so konstruiert, dass Reparaturen und Ersatzteile sinnvoll möglich sind."],
+["Nachhaltigkeit","Nachhaltigkeit zeigt sich in Material, Verpackung, Energie, Reparierbarkeit und Lebensdauer."],
+["Verpackungsdesign","Die Verpackung ist Teil des Produkterlebnisses und verwendet möglichst wenig unnötiges Material."],
+["Unboxing","Das Auspacken wird als kurzer technologischer Moment inszeniert, ohne unnötigen Luxus."],
+["Website","Die Website zeigt Produkte, Ideen und die GlowShore-Philosophie mit dunkler, animierter Tech-Ästhetik."],
+["Social Media","Konzeptzeichnungen, 3D-Modelle, Entscheidungen und Lernfortschritte machen den Markenaufbau sichtbar."],
+["Community","Feedback kann Produkte verbessern, bleibt aber eine Informationsquelle und kein automatischer Entscheidungsmechanismus."],
+["Zukunftsvision","GlowShore kann sich langfristig auf persönliche Technologie, Wearables, Smart Home, Software, KI und Services erweitern."],
+["GlowShore als Gesamterlebnis","S-Emblem, Neonfarben, Miami-Nachtästhetik und technische Formensprache bilden eine eigenständige Welt."]
+];
+
+const pointsEl=document.getElementById("points");
+const search=document.getElementById("search");
+function render(q=""){
+  const term=q.trim().toLowerCase();
+  const filtered=points.filter(([t,p])=>(t+" "+p).toLowerCase().includes(term));
+  pointsEl.innerHTML=filtered.map(([t,p],i)=>`
+    <article class="card point">
+      <div class="num">${String(points.indexOf(points.find(x=>x[0]===t))+1).padStart(2,"0")}</div>
+      <h3>${t}</h3><p>${p}</p>
+    </article>`).join("");
+}
+render();
+search.addEventListener("input",e=>render(e.target.value));
+document.getElementById("clear").onclick=()=>{search.value="";render()};
+document.getElementById("menuBtn").onclick=()=>document.getElementById("nav").classList.toggle("open");
+document.querySelectorAll(".navlinks a").forEach(a=>a.onclick=()=>document.getElementById("nav").classList.remove("open"));
+const obs=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add("show")}),{threshold:.08});
+document.querySelectorAll(".reveal").forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>
